@@ -1,19 +1,19 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Дадати нову статтю
+    Редагування сторінки {{title_page}}
 {% endblock %}
 
 {% block body %}
 
 
 
-<form action="{%url 'enc:add'%}" method="post">
+<form action="{%url 'enc:saveedit'%}" method="post">
     {% csrf_token %}
     <div class="card" style="height: 100%;">
       <div class="card-body">
         <h5 class="card-title">
-            <h3>Створення нової статті</h3>
+          <h3>Редагування '{{title_page}}'</h3>
         </h5>
         {% if error %}
           <h6 style="color:red;">{{error}}</h6>
