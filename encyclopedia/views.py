@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+import markdown2
 from django import forms
 
 from . import util
@@ -23,9 +23,11 @@ def article(request, name):
             "name": f'Стаття з назвою {name} не знайдена',
             "content": ""
         })
+    md = markdown2.Markdown()
+    result = md.convert(content)
     return render(request, "encyclopedia/article.html", {
         "name": name,
-        "content": util.get_entry(name)
+        "content": result
     })
 
 
@@ -75,7 +77,7 @@ def edit(request, name):
     content = util.get_entry(name)
     return render(request, "encyclopedia/edit.html", {
             "form": NewArticleForms({'article':name,'content':content}),
-            "title_page": f"Редагування статті '{name}'"
+            "title_page":name
                 })
 
 
