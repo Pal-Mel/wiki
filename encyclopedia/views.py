@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import markdown2
+import random
 from django import forms
 
 from . import util
@@ -89,3 +90,8 @@ def saveedit(request):
             content = form.cleaned_data["content"]
             util.save_entry(article, content)
             return HttpResponseRedirect(f"/wiki/{article}")
+
+def randompage(request):
+    pages =  util.list_entries()
+    rand = random.choice(pages)
+    return HttpResponseRedirect(f"/wiki/{rand}")

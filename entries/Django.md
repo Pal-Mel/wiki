@@ -1,3 +1,3 @@
 # Django
-vfffffffffffffffffff
+[vfffffffffffffffffff](/wiki/HTML) 
 Django is a web framework written using [Python](/wiki/Python) that allows for the design of web applications that generate [HTMdfsefdfsrewL](/wiki/HTML) dynamically.
